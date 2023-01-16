@@ -5,22 +5,27 @@ const contactsPath = path.join(__dirname, "./db/contacts.json");
 // Отримати всі контакти -contactsPath.getAll
 const listContacts = async () => {
   const data = await fs.readFile(contactsPath);
-  const contacts = JSON.parse(data)
+  const contacts = JSON.parse(data);
   return contacts;
 };
 
 //   отримати один контакт по id
-function getContactById(contactId) {
-  // ...твой код
-}
+const getContactById = async (contactId) => {
+  const contacts = await listContacts();
+  const result = contacts.find((contact) => contact.Id === contactId);
+  if (!result) {
+    return null;
+  }
+  return result;
+};
 
 //Добавити контакт по name, email, phone
-function addContact(name, email, phone) {
-  // ...твой код
-}
+const addContact = async (name, email, phone) => {
+  const addContacts = await
+};
 
 //Видалити контакт по id
 function removeContact(contactId) {
   // ...твой код
 }
-module.exports = { listContacts };
+module.exports = { listContacts, getContactById, addContact, removeContact };

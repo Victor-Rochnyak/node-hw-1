@@ -9,11 +9,16 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
       break;
 
     case "get":
-      // ... id
+      const contact = await contactsOperations.getContactById(id);
+      if (!contact) {
+        throw new Error(`Contact with id=${id} not found`);
+      }
+      console.log(contact);
       break;
 
     case "add":
-      // ... name email phone
+      const newContact =await contactsOperations.addContact(name, email, phone);
+      console.log(newContact);
       break;
 
     case "remove":
@@ -24,4 +29,4 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
       console.warn("\x1B[31m Unknown action type!");
   }
 };
-invokeAction({action:'list'});
+invokeAction({ action: "add" });
