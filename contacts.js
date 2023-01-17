@@ -1,10 +1,12 @@
 const fs = require("fs/promises");
 const path = require("path");
 const { v4 } = require("uuid");
+
 const contactsPath = path.join(__dirname, "./db/contacts.json");
 
 // TODO: задокументировать каждую функцию
-// Отримати всі контакти -contactsPath.getAll
+
+// Отримати всі контакти 
 const listContacts = async () => {
   const data = await fs.readFile(contactsPath);
   const contacts = JSON.parse(data);
