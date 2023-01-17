@@ -6,7 +6,7 @@ const contactsPath = path.join(__dirname, "./db/contacts.json");
 
 // TODO: задокументировать каждую функцию
 
-// Отримати всі контакти 
+// Отримати всі контакти
 const listContacts = async () => {
   const data = await fs.readFile(contactsPath);
   const contacts = JSON.parse(data);
@@ -16,11 +16,10 @@ const listContacts = async () => {
 //   отримати один контакт по id
 const getContactById = async (contactId) => {
   const contacts = await listContacts();
-  const result = contacts.find((contact) => contact.Id === contactId);
+  const result = contacts.find((contact) => contact.id === contactId);
   if (!result) {
     return null;
   }
-  name, email, phone;
   return result;
 };
 
